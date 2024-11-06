@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Receta de la tortilla francesa</title>
+</head>
+<style>
+
+	#p1 {
+		font-style: italic;
+		text-align: right;
+	}
+
+	#p2 {
+		text-transform: uppercase;
+		text-decoration: line-through;
+	}
+
+	#p3 {
+		font-size: 120%;
+		font-family: monospace, sans-serif;
+	}
+
+	#p4 {
+		font-weight: bold;
+		text-shadow: -4px 3px 5px green;
+	}
+
+	.prin {
+		display: flex;
+	}
+	
+	#buscadores {
+		background-color: lightyellow;
+		height: 200px;
+		width: 400px;
+		border-radius: 20px;
+		display: inline-block;
+	}
+
+	#redessociales {
+		background-color: lightblue;
+		height: 200px;
+		width: 400px;
+		border-radius: 20px;
+		display: inline-block;
+	}
+
+	#noticias {
+		background-color: lightpink;
+		height: 200px;
+		width: 400px;
+		border-radius: 20px;
+		display: inline-block;
+	}
+
+	a {
+		color: white;
+	}
+
+	.adiv1 {
+		width: 100px;
+		height: 50px;
+		display: inline-block;
+	}
+
+	.adiv2 {
+		width: 100px;
+		height: 50px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	#bca1 {
+		background-color: red;
+	}
+
+	#bca2 {
+		background-color: green;
+	}
+
+	#bca3 {
+		background-color: blue;
+	}
+
+</style>
+<body>
+	<h1>Actividad 4.1 - Román Saborido</h1>
+	<p id="p1">
+		Este es el párrafo número 1 en cursiva y alineado a la derecha.
+	</p>
+	<p id="p2">
+		este también es un párrafo en minúsculas pero convertido en mayúsculas y tachado.
+	</p>
+	<p id="p3">
+		Como no hay dos sin tres, este será el tercero con un tipo de letra diferente y un 20% más grande.
+	</p>
+	<p id="p4">
+		Y por último, un texto en negrita y con sombrita en verde.
+	</p>
+
+	<hr>
+
+	<div class="prin">
+		<div id="buscadores">
+			<p id="pdiv">
+				<strong>Buscadores:</strong>
+			</p>
+			<p>
+				<a class="adiv1" id="bca1" href="https://duckduckgo.com/">DuckDuckGo</a>
+				<a class="adiv1" id="bca2" href="https://www.ecosia.org/?c=es">Ecosia</a>
+				<a class="adiv1" id="bca3" href="https://www.google.com/?hl=es">Google</a>
+			</p>
+		</div>
+
+		<div id="redessociales">
+			<p id="pdiv">
+				<strong>Redes sociales:</strong>
+			</p>
+			<p>
+				<a class="adiv2" id="bca1" href="https://www.facebook.com/?locale=es_ES">Facebook</a>
+				<a class="adiv2" id="bca2" href="https://x.com/?lang=es">Twitter</a>
+				<a class="adiv2" id="bca3" href="https://es.pinterest.com/">Pinterest</a>
+			</p>
+		</div>
+
+		<div id="noticias">
+			<p>
+				<strong>Noticias:</strong>
+			</p>
+			<p>
+				<a href="https://elpais.com/">El Pais</a>
+				<a href="https://www.eldiario.es/">El Diario</a>
+				<a href="https://www.elmundo.es/">El Mundo</a>
+			</p>
+		</div>
+	</div>
+
+</body>
+</html>
