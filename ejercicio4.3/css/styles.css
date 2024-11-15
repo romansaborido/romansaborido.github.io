@@ -1,0 +1,55 @@
+body {
+	background-color: #B5F4FF;
+}
+
+h1 {
+	font-family: helvetica;
+}
+
+header {
+	background-color: #007bff;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	color: darkblue;
+}
+
+#contenido {
+	padding: 25px;
+	/* cambiar tamaño h2 */
+}
+
+section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+}
+
+section p {
+	font-size: 18px;
+	color: darkblue;
+}
+
+section img {
+	height: 220px;
+	width: 400px;
+	box-shadow: 5px 5px 5px #007bff;
+	margin-top: 25px;
+}
+
+footer {
+	background-color: #333;
+	color: white;
+	text-align: center;
+	padding: 15px;
+	/* margenes */
+}
