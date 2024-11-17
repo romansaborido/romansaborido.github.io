@@ -13,8 +13,14 @@ header {
 }
 
 #imagenes {
+	width: 60%;
 	display: flex;
 	justify-content: space-between;
+}
+
+#imagenes img {
+	width: 200px;
+	height: 200px;
 }
 
 nav {
