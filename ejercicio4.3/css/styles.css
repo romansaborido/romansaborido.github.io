@@ -9,12 +9,21 @@ h1 {
 header {
 	background-color: #007bff;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 15px;
+}
+
+nav {
+	display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
 }
 
 nav a {
 	color: white;
 	text-decoration: none;
+	padding: 8px;
+	font-size: 20px;
 }
 
 a:hover {
@@ -23,7 +32,6 @@ a:hover {
 
 #contenido {
 	padding: 25px;
-	/* cambiar tamaño h2 */
 }
 
 section {
@@ -46,10 +54,17 @@ section img {
 	margin-top: 25px;
 }
 
+h3 {
+	margin-top: 60px;
+}
+
 footer {
 	background-color: #333;
 	color: white;
 	text-align: center;
-	padding: 15px;
-	/* margenes */
+	padding: 8px;
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
 }
