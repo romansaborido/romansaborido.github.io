@@ -12,6 +12,15 @@ header {
 	padding: 15px;
 }
 
+#imagenes {
+	display: flex;
+	justify-content: space-between;
+}
+
+#imagenes img {
+	width: 30%;
+}
+
 nav {
 	display: flex;
     justify-content: space-evenly;
