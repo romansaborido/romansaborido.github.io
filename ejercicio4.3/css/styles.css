@@ -17,10 +17,6 @@ header {
 	justify-content: space-between;
 }
 
-#imagenes img {
-	height: 100px;
-}
-
 nav {
 	display: flex;
     justify-content: space-evenly;
