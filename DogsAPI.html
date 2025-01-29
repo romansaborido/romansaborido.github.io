@@ -29,6 +29,7 @@
 		$.get("https://dog.ceo/api/breeds/list/all")
 			.done(function (data) {
 				console.log(data);
+				console.log(data.australian);
 			})
 			.fail(function (xhr,status,error) {
 				console.log('Error: ' + xhr.status + ' ' + error);
