@@ -11,7 +11,7 @@
 	<p id="titulo_pagina">Dogs.meet</p>
 
 	<!-- Selector -->
-	<select>
+	<select id="razas">
 	</select>
 
 	<!-- Botón -->
@@ -29,7 +29,14 @@
 		$.get("https://dog.ceo/api/breeds/list/all")
 			.done(function (data) {
 				console.log(data);
-				console.log(data.australian);
+
+				// Creamos la variable razas para obtener todas las razas que nos devuelve la API
+				let razas = data.message;
+
+				// Recorremos las razas y las vamos añadiendo al select
+				for (let raza in razas) {
+					$("#razas").append()
+				}
 			})
 			.fail(function (xhr,status,error) {
 				console.log('Error: ' + xhr.status + ' ' + error);
