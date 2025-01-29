@@ -24,7 +24,19 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	
-	// GET JQUERY
+	// GET JQUERY -> Almacenamos todos los valores del select
+	$(document).ready(function () {
+		$.get("https://dog.ceo/api/breeds/list/all")
+			.done(function (data) {
+				console.log(data);
+			})
+			.fail(function (xhr,status,error) {
+				console.log('Error: ' + xhr.status + ' ' + error);
+			});
+	});
+
+
+	// GET JQUERY -> Almacenamos la URL de la imagen
 	$("#boton").click( function () {
 		$.get("https://dog.ceo/api/breeds/image/random")
 			.done(function (data) {
@@ -35,6 +47,8 @@
 				console.log('Error: ' + xhr.status + ' ' + error);
 			});
 	});
+
+
 
 
 
