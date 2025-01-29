@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dogs API</title>
+</head>
+<body>
+
+	<!-- Título página -->
+	<p id="titulo_pagina">Dogs.meet</p>
+
+	<!-- Selector -->
+	<select>
+	</select>
+
+	<!-- Botón -->
+	<button name="boton">GET</button>
+
+	<!-- Imagen -->
+	<img src=""></img>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	
+	// GET JQUERY
+	$("#boton").click( function () {
+		$.get("https://dog.ceo/api/breeds/image/random")
+			.done(function (data) {
+				console.log(data);
+			})
+			.fail(function (xhr,status,error) {
+				console.log('Error: ' + xhr.satus + ' ' + error);
+			});
+	});
+
+</script>
+</html>
