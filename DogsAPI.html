@@ -15,7 +15,7 @@
 	</select>
 
 	<!-- Botón -->
-	<button name="boton">GET</button>
+	<button id="boton">GET</button>
 
 	<!-- Imagen -->
 	<img src=""></img>
@@ -29,11 +29,15 @@
 		$.get("https://dog.ceo/api/breeds/image/random")
 			.done(function (data) {
 				console.log(data);
+				let urlImagen = data.message;
 			})
 			.fail(function (xhr,status,error) {
-				console.log('Error: ' + xhr.satus + ' ' + error);
+				console.log('Error: ' + xhr.status + ' ' + error);
 			});
 	});
+
+
+
 
 </script>
 </html>
