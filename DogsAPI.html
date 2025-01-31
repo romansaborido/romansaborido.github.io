@@ -10,7 +10,6 @@
 	<!-- Título página -->
 	<p id="titulo_pagina">Dogs.meet</p>
 
-
 	<!-- Selector razas -->
 	<select id="razas">
 	</select>
@@ -19,29 +18,21 @@
 	<button id="boton">GET</button>
 
 	<!-- Imagen -->
-	<img src=""></img>
+	<img id="imagen" src="" alt="Imagen del perro"/>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	
-
-
-	// GET JQUERY -> Almacenamos todos los valores del select
+	// GET JQUERY -> Obtenemos las razas
 	$(document).ready(function () {
 
 		// Obtenemos el objeto con todas las razas
 		$.get("https://dog.ceo/api/breeds/list/all")
 			.done(function (data) {
 
-				// Lo mostramos por consola
-				console.log(data);
-
-				// Creamos la variable razas para obtener todas las razas que nos devuelve la API
+				// Obtenemos las razas
 				let razas = data.message;
-
-				// Creamos la variable contador para ir incrementando el valor
-				let value = 1;
 
 				// Recorremos las razas
 				for (let raza in razas) {
@@ -49,44 +40,49 @@
 					// Si la raza tiene subrazas
 					if (razas[raza].length > 0) {
 
-						// Recorremos la subrazas
-						for (let subraza in subrazas) {
-							$("#razas").append("<option value1=" + value + ">" + subraza + "</option>" + "<br>");
+						// Recorremos las subrazas
+						for (let subraza in razas[raza]) {
+
+							// Añadimos cada subraza al select
+							$("#razas").append("<option value='" + raza + "/" + razas[raza][subraza] + "'>" + raza + " " + razas[raza][subraza] + "</option>");
 						}
 
 					// Si la raza no tiene subrazas
 					} else {
 
-							// Añadimos la unica raza al select
-							$("#razas").append("<option value1=" + value + ">" + raza + "</option>" + "<br>");
+						// Añadimos la unica raza
+						$("#razas").append("<option value='" + raza + "'>" + raza + "</option>");
 					}
-					
-					// Incrementamos el valor
-					value++;
 				}
 			})
-			.fail(function (xhr,status,error) {
+			.fail(function (xhr, status, error) {
 				console.log('Error: ' + xhr.status + ' ' + error);
 			});
+
+
+		// Al hacer clic en el botón obtenemos una imagen aleatoria
+		$("#boton").click(function () {
+
+			// Obtener la raza seleccionada
+			let razaSeleccionada = $("#razas").val();
+
+			// Si la raza tiene subrazas, utilizamos el primer valor como raza
+			let razaPrincipal = razaSeleccionada.split('/')[0];
+
+			// Obtenemos una imagen de la raza seleccionada
+			$.get("https://dog.ceo/api/breeds/image/random/" + razaPrincipal)
+				.done(function (data) {
+
+					// Obtenemos la URL de la imagen
+					let urlImagen = data.message;
+
+					// Asignamos la URL de la imagen a la etiqueta <img>
+					$("#imagen").attr("src", urlImagen);
+				})
+				.fail(function (xhr, status, error) {
+					console.log('Error: ' + xhr.status + ' ' + error);
+				});
+		});
 	});
-
-
-	// GET JQUERY -> Almacenamos la URL de la imagen
-	$("#boton").click( function () {
-		$.get("https://dog.ceo/api/breeds/image/random")
-			.done(function (data) {
-				console.log(data);
-				let urlImagen = data.message;
-			})
-			.fail(function (xhr,status,error) {
-				console.log('Error: ' + xhr.status + ' ' + error);
-			});
-	});
-
-
-
-
-
-
 </script>
 </html>
