@@ -10,8 +10,6 @@
 	<!-- Título página -->
 	<p id="titulo_pagina">Dogs.meet</p>
 
-	<!-- Selector pais -->
-
 
 	<!-- Selector razas -->
 	<select id="razas">
@@ -44,20 +42,19 @@
 				// Recorremos las razas
 				for (let raza in razas) {
 
-					// Si el array de la raza esta vacio
-					if (raza.length != 0) {
+					// Si la raza tiene subrazas
+					if (razas[raza].length > 0) {
 
-						// Añadimos unicamente la raza al select
-						$("#razas").append("<option value1=" + value + ">" + raza + "</option>" + "<br>");
+						// Recorremos la subrazas
+						for (let subraza in subrazas) {
+							$("#razas").append("<option value1=" + value + ">" + subraza + "</option>" + "<br>");
+						}
 
-					// Si el array de la raza no esta vacio
+					// Si la raza no tiene subrazas
 					} else {
 
-						// Recorremos el array
-						for (let i = 0 ; i < raza.length ; i++) {
-
-							// Añadimos unicamente la raza al select junto con la nacionalidad de la raza
-							$("#razas").append("<option value1=" + value + ">" + raza[i] + raza + "</option>" + "<br>");
+							// Añadimos la unica raza al select
+							$("#razas").append("<option value1=" + value + ">" + raza + "</option>" + "<br>");
 						}
 					}
 					
