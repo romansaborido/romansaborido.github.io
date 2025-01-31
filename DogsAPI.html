@@ -29,6 +29,8 @@
 
 		// Obtenemos el objeto con todas las razas
 		$.get("https://dog.ceo/api/breeds/list/all")
+
+			// Ejecutamos la siguiente funcion
 			.done(function (data) {
 
 				// Obtenemos las razas
@@ -55,6 +57,8 @@
 					}
 				}
 			})
+
+			// En caso de que la funcion de error
 			.fail(function (xhr, status, error) {
 				console.log('Error: ' + xhr.status + ' ' + error);
 			});
@@ -63,7 +67,7 @@
 		// Al hacer clic en el botón obtenemos una imagen aleatoria
 		$("#boton").click(function () {
 
-			// Obtener la raza seleccionada
+			// Obtenemos la raza seleccionada
 			let razaSeleccionada = $("#razas").val();
 
 			// Si la raza tiene subrazas, utilizamos el primer valor como raza
@@ -79,6 +83,8 @@
 					// Asignamos la URL de la imagen a la etiqueta <img>
 					$("#imagen").attr("src", urlImagen);
 				})
+
+				// En caso de que la funcion de error
 				.fail(function (xhr, status, error) {
 					console.log('Error: ' + xhr.status + ' ' + error);
 				});
