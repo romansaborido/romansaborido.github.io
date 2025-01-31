@@ -33,9 +33,14 @@
 				// Creamos la variable razas para obtener todas las razas que nos devuelve la API
 				let razas = data.message;
 
+				// Creamos la variable contador para ir incrementando el valor
+				let value = 1;
+
 				// Recorremos las razas y las vamos añadiendo al select
 				for (let raza in razas) {
-					$("#razas").append(raza);
+					$("#razas").append("<option value1=" + value + value + ">" + raza + "</option>");
+					value++;
+
 				}
 			})
 			.fail(function (xhr,status,error) {
