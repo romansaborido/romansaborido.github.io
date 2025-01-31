@@ -10,7 +10,10 @@
 	<!-- Título página -->
 	<p id="titulo_pagina">Dogs.meet</p>
 
-	<!-- Selector -->
+	<!-- Selector pais -->
+
+
+	<!-- Selector razas -->
 	<select id="razas">
 	</select>
 
@@ -24,6 +27,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	
+
+
 	// GET JQUERY -> Almacenamos todos los valores del select
 	$(document).ready(function () {
 		$.get("https://dog.ceo/api/breeds/list/all")
@@ -36,11 +41,28 @@
 				// Creamos la variable contador para ir incrementando el valor
 				let value = 1;
 
-				// Recorremos las razas y las vamos añadiendo al select
+				// Recorremos las razas
 				for (let raza in razas) {
-					$("#razas").append("<option value1=" + value + value + ">" + raza + "</option>");
-					value++;
 
+					// Si el array de la raza esta vacio
+					if (raza.length() != 0) {
+
+						// Añadimos unicamente la raza al select
+						$("#razas").append("<option value1=" + value + value + ">" + raza + "</option>" + "<br>");
+
+					// Si el array de la raza no esta vacio
+					} else {
+
+						// Recorremos el array
+						for (let i = 0 ; i < raza.length() ; i++) {
+
+							// Añadimos unicamente la raza al select junto con la nacionalidad de la raza
+							$("#razas").append("<option value1=" + value + value + ">" + i + raza + "</option>" + "<br>");
+						}
+					}
+					
+					// Incrementamos el valor
+					value++;
 				}
 			})
 			.fail(function (xhr,status,error) {
