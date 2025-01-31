@@ -29,8 +29,12 @@
 
 	// GET JQUERY -> Almacenamos todos los valores del select
 	$(document).ready(function () {
+
+		// Obtenemos el objeto con todas las razas
 		$.get("https://dog.ceo/api/breeds/list/all")
 			.done(function (data) {
+
+				// Lo mostramos por consola
 				console.log(data);
 
 				// Creamos la variable razas para obtener todas las razas que nos devuelve la API
@@ -55,7 +59,6 @@
 
 							// Añadimos la unica raza al select
 							$("#razas").append("<option value1=" + value + ">" + raza + "</option>" + "<br>");
-						}
 					}
 					
 					// Incrementamos el valor
