@@ -73,11 +73,10 @@
 			// Obtenemos la raza seleccionada
 			let razaSeleccionada = $("#razas").val();
 
-			// Si la raza tiene subrazas, utilizamos el primer valor como raza
-			let razaPrincipal = razaSeleccionada.split('/')[0];
+			// Obtenemos la imagen de la raza seleccionada
+			$.get("https://dog.ceo/api/breeds/image/" + razaSeleccionada)
 
-			// Obtenemos una imagen de la raza seleccionada
-			$.get("https://dog.ceo/api/breeds/image/random/" + razaPrincipal)
+				// Ejecutamos la siguiente funcion
 				.done(function (data) {
 
 					// Obtenemos la URL de la imagen
