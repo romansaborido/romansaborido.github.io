@@ -45,7 +45,7 @@
 				for (let raza in razas) {
 
 					// Si el array de la raza esta vacio
-					if (raza.length() != 0) {
+					if (raza.length != 0) {
 
 						// Añadimos unicamente la raza al select
 						$("#razas").append("<option value1=" + value + value + ">" + raza + "</option>" + "<br>");
@@ -54,10 +54,10 @@
 					} else {
 
 						// Recorremos el array
-						for (let i = 0 ; i < raza.length() ; i++) {
+						for (let i = 0 ; i < raza.length ; i++) {
 
 							// Añadimos unicamente la raza al select junto con la nacionalidad de la raza
-							$("#razas").append("<option value1=" + value + value + ">" + i + raza + "</option>" + "<br>");
+							$("#razas").append("<option value1=" + value + value + ">" + raza[i] + raza + "</option>" + "<br>");
 						}
 					}
 					
