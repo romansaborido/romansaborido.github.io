@@ -125,11 +125,18 @@
 			// Obtener la raza seleccionada
 			let razaSeleccionada = $("#razas").val();
 
-			// Dividir la raza seleccionada en nacionalidad y nombre de la raza
-			let partes = razaSeleccionada.split('/');
+			// Si raza seleccionada contiene /
+			if (razaSeleccionada.contains("/")) {
 
-			// Construir la URL de la imagen usando el formato adecuado
-			let urlImagen = "https://dog.ceo/api/breed/" + partes[0] + "/" + partes[1] + "/images/random";
+				// Dividir la raza seleccionada en nacionalidad y nombre de la raza
+				let partes = razaSeleccionada.split('/');
+
+				// Construir la URL de la imagen usando el formato adecuado
+				let urlImagen = "https://dog.ceo/api/breed/" + partes[0] + "/" + partes[1] + "/images/random";
+			} else {
+				// Construir la URL de la imagen usando el formato adecuado
+				let urlImagen = "https://dog.ceo/api/breed/" + razaSeleccionada + "/images/random";
+			}
 
 			// Obtener la imagen aleatoria de la raza seleccionada
 			$.get(urlImagen)
