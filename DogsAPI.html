@@ -79,7 +79,7 @@
 		<button id="boton">GET</button>
 
 		<!-- Imagen -->
-		<img id="imagen" src=""/>
+		<img id="imagen" src="" alt="Imagen del perro"/>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -112,6 +112,37 @@
 						} else {
 
 							// Añadimos la unica raza
-							$("#razas").
+							$("#razas").append("<option value='" + raza + "'>" + raza + "</option>");
+						}
+					}
+				})
+				.fail(function (xhr, status, error) {
+					console.log('Error: ' + xhr.status + ' ' + error);
+				});
 
+			// Al hacer clic en el botón obtenemos una imagen aleatoria
+			$("#boton").click(function () {
 
+				// Obtener la raza seleccionada
+				let razaSeleccionada = $("#razas").val();
+
+				// Dividir la raza seleccionada en nacionalidad y nombre de la raza
+				let partes = razaSeleccionada.split('/');
+
+				// Construir la URL de la imagen usando el formato adecuado
+				let urlImagen = "https://dog.ceo/api/breed/" + partes[0] + "/" + partes[1] + "/images/random";
+
+				// Obtener la imagen aleatoria de la raza seleccionada
+				$.get(urlImagen)
+					.done(function (data) {
+						// Asignamos la URL de la imagen a la etiqueta <img>
+						$("#imagen").attr("src", data.message);
+					})
+					.fail(function (xhr, status, error) {
+						console.log('Error: ' + xhr.status + ' ' + error);
+					});
+			});
+		});
+	</script>
+</body>
+</html>
