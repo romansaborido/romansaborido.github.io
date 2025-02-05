@@ -1,115 +1,83 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dogs.meet</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f4f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        #container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        #titulo_pagina {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        select, button {
-            padding: 10px;
-            font-size: 1rem;
-            margin-top: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-        }
-        select {
-            width: 200px;
-        }
-        button {
-            background-color: #3498db;
-            color: white;
-            border: none;
-        }
-        button:hover {
-            background-color: #2980b9;
-        }
-        #imagen {
-            margin-top: 20px;
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dogs API</title>
 </head>
 <body>
 
-    <div id="container">
-        <p id="titulo_pagina">Dogs.meet</p>
+	<!-- Título página -->
+	<p id="titulo_pagina">Dogs.meet</p>
 
-        <!-- Selector razas -->
-        <select id="razas">
-            <option value="">Selecciona una raza</option>
-        </select>
+	<!-- Selector razas -->
+	<select id="razas">
+	</select>
 
-        <!-- Botón -->
-        <button id="boton">Obtener imagen</button>
+	<!-- Botón -->
+	<button id="boton">GET</button>
 
-        <!-- Imagen -->
-        <img id="imagen" src="" alt="Imagen del perro"/>
-    </div>
+	<!-- Imagen -->
+	<img id="imagen" src="" alt="Imagen del perro"/>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Obtenemos las razas
-            $.get("https://dog.ceo/api/breeds/list/all")
-                .done(function (data) {
-                    let razas = data.message;
-                    for (let raza in razas) {
-                        if (razas[raza].length > 0) {
-                            for (let subraza in razas[raza]) {
-                                $("#razas").append("<option value='" + raza + "/" + razas[raza][subraza] + "'>" + raza + " " + razas[raza][subraza] + "</option>");
-                            }
-                        } else {
-                            $("#razas").append("<option value='" + raza + "'>" + raza + "</option>");
-                        }
-                    }
-                })
-                .fail(function (xhr, status, error) {
-                    console.log('Error: ' + xhr.status + ' ' + error);
-                });
-
-            // Al hacer clic en el botón
-            $("#boton").click(function () {
-                let razaSeleccionada = $("#razas").val();
-                if (razaSeleccionada) {
-                    $.get("https://dog.ceo/api/breeds/image/random/" + razaSeleccionada)
-                        .done(function (data) {
-                            let urlImagen = data.message;
-                            $("#imagen").attr("src", urlImagen);
-                        })
-                        .fail(function (xhr, status, error) {
-                            console.log('Error: ' + xhr.status + ' ' + error);
-                        });
-                } else {
-                    alert("Por favor, selecciona una raza.");
-                }
-            });
-        });
-    </script>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+	// GET JQUERY -> Obtenemos las razas
+	$(document).ready(function () {
+
+		// Obtenemos el objeto con todas las razas
+		$.get("https://dog.ceo/api/breeds/list/all")
+			.done(function (data) {
+
+				// Obtenemos las razas
+				let razas = data.message;
+
+				// Recorremos las razas
+				for (let raza in razas) {
+
+					// Si la raza tiene subrazas
+					if (razas[raza].length > 0) {
+
+						// Recorremos las subrazas
+						for (let subraza in razas[raza]) {
+
+							// Añadimos cada subraza al select
+							$("#razas").append("<option value'" + subraza + raza + "'>" + subraza + " " + raza + "</option>");
+						}
+
+					// Si la raza no tiene subrazas
+					} else {
+
+						// Añadimos la unica raza
+						$("#razas").append("<option value='" + raza + "'>" + raza + "</option>");
+					}
+				}
+			})
+			.fail(function (xhr, status, error) {
+				console.log('Error: ' + xhr.status + ' ' + error);
+			});
+
+		// Al hacer clic en el botón obtenemos una imagen aleatoria
+		$("#boton").click(function () {
+
+			// Obtener la raza seleccionada
+			let razaSeleccionada = $("#razas").val();
+
+			// Obteenemos una imagen aleatoria de la raza seleccionada
+			$.get("https://dog.ceo/api/breeds/image/random/" + razaSeleccionada)
+				.done(function (data) {
+					// Obtenemos la URL de la imagen
+					let urlImagen = data.message;
+
+					// Asignamos la URL de la imagen a la etiqueta <img>
+					$("#imagen").attr("src", urlImagen);
+				})
+				.fail(function (xhr, status, error) {
+					console.log('Error: ' + xhr.status + ' ' + error);
+				});
+		});
+	});
+</script>
 </html>
